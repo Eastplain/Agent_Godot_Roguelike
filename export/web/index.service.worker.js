@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1777812411|2475010';
+const CACHE_VERSION = '1777813769|2855498';
 /** @type {string} */
 const CACHE_PREFIX = 'Roguelike Demo-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
