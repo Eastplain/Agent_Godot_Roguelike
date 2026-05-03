@@ -27,7 +27,10 @@ window/size/viewport_width=720
 window/size/viewport_height=1280
 window/size/resizable=false
 window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
+
+[gui]
+
+theme/custom_font="res://resource/font/simhei.ttf"
 
 [input]
 

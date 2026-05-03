@@ -14,9 +14,8 @@ var level: int = 1
 var _levelData: Dictionary = {}
 var _giftLevels: Dictionary = {}   # {giftId: 已选次数}
 
-# ── 触屏操控 ──
-var _touchDir: Vector2 = Vector2.ZERO
-var _touchActive: bool = false
+# ── 虚拟摇杆引用 ──
+var _joystick = null
 
 # ── 吸铁石脉冲 ──
 var _magnetTimer: float = 0.0
@@ -36,6 +35,7 @@ func _ready():
 	weaponSlot = $WeaponSlot
 	_equipWeapon(startWeapon)
 	_loadLevelData()
+	_joystick = get_tree().get_first_node_in_group("joystick")
 
 
 func _equipWeapon(weaponScene: PackedScene):
@@ -97,8 +97,8 @@ func _process(delta):
 		queue_redraw()
 
 	var dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if dir == Vector2.ZERO and _touchActive:
-		dir = _touchDir
+	if dir == Vector2.ZERO and _joystick:
+		dir = _joystick.dir
 	velocity = dir * speed
 	if dir.length() > 0:
 		SignalHub.playerMoved.emit(position)
@@ -142,26 +142,6 @@ func _draw():
 func takeDamage(amount: int):
 	super.takeDamage(amount)
 	SignalHub.playerHit.emit(amount)
-
-
-func _input(event):
-	# 触屏操控：左半屏 = 虚拟摇杆
-	if event is InputEventScreenTouch or event is InputEventScreenDrag:
-		var vpSize = get_viewport().get_visible_rect().size
-		if event.position.x < vpSize.x / 2:
-			var center = Vector2(vpSize.x / 4, vpSize.y * 0.65)
-			var diff = event.position - center
-			var len = diff.length()
-			var deadZone = 20.0
-			if event is InputEventScreenTouch and not event.pressed:
-				_touchDir = Vector2.ZERO
-				_touchActive = false
-			elif len > deadZone:
-				_touchDir = (diff / min(len, 120.0)).limit_length(1.0)
-				_touchActive = true
-			else:
-				_touchDir = Vector2.ZERO
-				_touchActive = false
 
 
 # ── 经验/等级 ──

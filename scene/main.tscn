@@ -1,16 +1,19 @@
-[gd_scene format=3 uid="uid://deqm7d51mdro6"]
+[gd_scene load_steps=4 format=3 uid="uid://deqm7d51mdro6"]
 
 [ext_resource type="PackedScene" path="res://scene/hud.tscn" id="1_hud"]
 [ext_resource type="Script" uid="uid://ct7515l4tqgty" path="res://scene/main.gd" id="1_mainGd"]
 [ext_resource type="PackedScene" uid="uid://b62bp7tatiere" path="res://chr/player/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://weapon/throwKnife/throwKnife.tscn" id="3_brvut"]
+[ext_resource type="PackedScene" path="res://scene/virtualJoystick.tscn" id="4_joystick"]
 
-[node name="Main" type="Node2D" unique_id=196527682]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_mainGd")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1944971473]
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Player" parent="." unique_id=1297631170 instance=ExtResource("1_player")]
+[node name="Player" parent="." instance=ExtResource("1_player")]
 startWeapon = ExtResource("3_brvut")
 
-[node name="HUD" parent="." unique_id=1563227253 instance=ExtResource("1_hud")]
+[node name="HUD" parent="." instance=ExtResource("1_hud")]
+
+[node name="VirtualJoystick" parent="." instance=ExtResource("4_joystick")]
