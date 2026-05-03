@@ -20,6 +20,7 @@ run/max_fps=60
 SignalHub="*res://scene/signalHub.gd"
 ConfigLoader="*res://scene/configLoader.gd"
 ValueHub="*res://scene/valueHub.gd"
+FontSetup="*res://scene/fontSetup.gd"
 
 [display]
 
@@ -28,10 +29,6 @@ window/size/viewport_height=1280
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="fractional"
-
-[gui]
-
-theme/custom="res://resource/font/default_theme.tres"
 
 [input]
 
