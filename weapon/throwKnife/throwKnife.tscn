@@ -6,21 +6,19 @@
 [sub_resource type="RectangleShape2D" id="TkShape"]
 size = Vector2(32, 68)
 
-[node name="ThrowKnife" type="Node2D"]
+[node name="ThrowKnife" type="Node2D" unique_id=24547930]
 script = ExtResource("1_tkGd")
 
-[node name="Scale" type="Node2D" parent="."]
-scale = Vector2(1, 1)
+[node name="Scale" type="Node2D" parent="." unique_id=901382610]
 
-[node name="Area" type="Area2D" parent="Scale"]
+[node name="Area" type="Area2D" parent="Scale" unique_id=1856195777]
 collision_layer = 8
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Area" unique_id=1278115682]
 position = Vector2(0, -34)
 shape = SubResource("TkShape")
 
-[node name="Sprite2D" type="Sprite2D" parent="Scale"]
+[node name="Sprite2D" type="Sprite2D" parent="Scale" unique_id=225473759]
 position = Vector2(0, -64)
-scale = Vector2(1, 1)
 texture = ExtResource("2_tkTex")
