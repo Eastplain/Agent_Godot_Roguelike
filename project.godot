@@ -22,6 +22,11 @@ ConfigLoader="*res://scene/configLoader.gd"
 ValueHub="*res://scene/valueHub.gd"
 FontSetup="*res://scene/fontSetup.gd"
 
+[gui]
+
+theme/custom_font="res://resource/font/simhei.ttf"
+theme/custom="res://resource/font/default_theme.tres"
+
 [display]
 
 window/size/viewport_width=720
