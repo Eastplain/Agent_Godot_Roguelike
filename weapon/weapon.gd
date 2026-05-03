@@ -17,7 +17,6 @@ func _ready():
 	_area = $Scale/Area
 	_area.area_entered.connect(_onHitEnemy)
 	_prevWorldPos = _area.global_position
-	queue_redraw()
 
 
 func _process(_delta):
@@ -36,7 +35,3 @@ func _onHitEnemy(area: Area2D):
 	if player:
 		var pushDir = (area.position - player.position).normalized()
 		area.knockbackVelocity += pushDir * knockbackStrength
-
-
-func _draw():
-	pass

@@ -3,14 +3,18 @@ extends Area2D
 
 var expValue: int = 1
 var target: Node2D
-var speed: float = 180.0
-var magnetRange: float = 120.0
-var magnetSpeed: float = 500.0
 var lifeTimer: float = 0.0
 var maxLife: float = 12.0
 var popTimer: float = 0.0
 var trailPositions: Array = []
 var trailLength: int = 8
+
+# 脉冲速度（吸铁石技能写入，逐帧衰减飞向主角）
+var _attractVelocity: Vector2 = Vector2.ZERO
+
+const BASE_ATTRACT_RANGE: float = 100.0   # 基础被动吸经范围
+const BASE_ATTRACT_SPEED: float = 400.0   # 基础吸经飞行速度
+
 
 func setup(value: int, playerRef: Node2D):
 	expValue = value
@@ -18,7 +22,7 @@ func setup(value: int, playerRef: Node2D):
 
 func _ready():
 	area_entered.connect(_onAreaEntered)
-	# 出生小弹跳
+	add_to_group("exp")
 	popTimer = 0.15
 	queue_redraw()
 
@@ -30,19 +34,29 @@ func _process(delta):
 
 	popTimer -= delta
 
-	var dist = INF
 	var aliveTarget = is_instance_valid(target) and target.hp > 0
 
 	if aliveTarget:
-		dist = position.distance_to(target.position)
-		var magRange = ValueHub.magnetRange()
-		if dist < magRange:
+		var dist = position.distance_to(target.position)
+
+		# 基础被动吸经：小范围自动飞向主角
+		if dist < BASE_ATTRACT_RANGE and dist > 0.5:
 			var dir = (target.position - position).normalized()
-			var t = 1.0 - (dist / magRange)
-			position += dir * (magnetSpeed * t * t) * delta
+			position += dir * BASE_ATTRACT_SPEED * delta
+		# 脉冲吸引力（吸铁石写入，持续衰减）
+		elif _attractVelocity.length() > 0.5:
+			position += _attractVelocity * delta
+			_attractVelocity *= 0.92   # 每帧衰减 8%
 		else:
 			# 微漂移
 			position.y += sin(lifeTimer * 4.0) * 0.3
+	else:
+		# 微漂移
+		position.y += sin(lifeTimer * 4.0) * 0.3
+
+	# 衰减清理
+	if _attractVelocity.length() < 0.5:
+		_attractVelocity = Vector2.ZERO
 
 	# 拖尾
 	trailPositions.push_front(position)

@@ -116,8 +116,8 @@ func _onPlayerHit(_damage: int):
 func _onGameOver():
 	var go = gameOverScene.instantiate()
 	add_child(go)
-	go.get_node("KillsLabel").text = "Lv.%d  |  Kills: %d" % [player.level, killCount]
-	go.get_node("RestartBtn").pressed.connect(_onRestart)
+	go.get_node("VBox/KillsLabel").text = "Lv.%d  |  Kills: %d" % [player.level, killCount]
+	go.get_node("VBox/CenterBtn/RestartBtn").pressed.connect(_onRestart)
 
 func _onRestart():
 	get_tree().reload_current_scene()
@@ -133,7 +133,11 @@ func _onLevelUp(_newLevel: int):
 	var popup = upgradePopupScene.instantiate()
 	add_child(popup)
 	popup.giftChosen.connect(func(giftId: String):
-		player.pickGift(giftId)
+		if giftId == "healPotion":
+			player.hp = player.maxHp
+			player.hpChanged.emit(player.hp, player.maxHp)
+		else:
+			player.pickGift(giftId)
 		updateHud()
 	)
 	popup.showChoices(player)

@@ -1,20 +1,26 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://d1fcitkmw3gyf"]
 
-[ext_resource type="Script" path="res://weapon/throwKnife/throwKnife.gd" id="1_tkGd"]
+[ext_resource type="Script" uid="uid://bgkbaw07jyi38" path="res://weapon/throwKnife/throwKnife.gd" id="1_tkGd"]
+[ext_resource type="Texture2D" uid="uid://dvswa1p1466u6" path="res://resource/weapon/ThrowKnife.png" id="2_tkTex"]
 
 [sub_resource type="RectangleShape2D" id="TkShape"]
-size = Vector2(8, 24)
+size = Vector2(32, 68)
 
 [node name="ThrowKnife" type="Node2D"]
 script = ExtResource("1_tkGd")
 
 [node name="Scale" type="Node2D" parent="."]
+scale = Vector2(1, 1)
 
 [node name="Area" type="Area2D" parent="Scale"]
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Area"]
+position = Vector2(0, -34)
 shape = SubResource("TkShape")
 
-[node name="Mesh" type="MeshInstance2D" parent="Scale"]
+[node name="Sprite2D" type="Sprite2D" parent="Scale"]
+position = Vector2(0, -64)
+scale = Vector2(1, 1)
+texture = ExtResource("2_tkTex")

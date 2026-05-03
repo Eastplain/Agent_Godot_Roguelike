@@ -33,7 +33,11 @@ TEMPLATE_DATA = {
     "weapon": [
         ["说明", "atk=伤害 orbitRadius=轨道半径 orbitSpeed=转速 knockbackStrength=击退力"],
         ["id", "name", "atk", "orbitRadius", "orbitSpeed", "knockbackStrength"],
-        ["sword", "剑", 1, 75, 4.5, 220],
+        ["sword", "剑", 1, 80, 4.5, 220],
+        ["longSword", "长剑", 3, 100, 2.5, 800],
+        ["axe", "斧", 4, 85, 2, 400],
+        ["testKnockback", "击退测试武器", 0, 100, 5, 2000],
+        ["throwKnife", "飞刀", 1, 75, 6, 50],
     ],
     "player": [
         ["说明", "hp=生命 atk=攻击(武器提供) moveSpeed=移速 weaponSpinSpeed=武器转速 | 开局写入ValueHub，对局内增益系统可动态修改"],
@@ -50,14 +54,14 @@ TEMPLATE_DATA = {
         ["5", "Lv.5", 300],
     ],
     "gift": [
-        ["说明", "id=技能标识 name=名称 desc=描述(%s替换数值) effectVar=作用变量 values=各级数值(逗号分隔) type=add/*%"],
+        ["说明", "id=技能标识 name=名称 desc=描述(%s替换数值) effectVar=作用变量 values=各级数值(逗号分隔) type=add/*%/magnet"],
         ["id", "name", "desc", "effectVar", "values", "type"],
         ["mighty", "强大", "可以额外增加%s生命值", "maxHp", "10,30,50,80,100", "*%"],
         ["proficiency", "熟练度", "武器攻击速度增加%s", "spinSpeed", "3,5,8,10,20", "*%"],
         ["weaponPlus", "武器+1", "武器数量+1", "weaponCount", "1,1,1,1,1,1,1,1,1,1", "add"],
-        ["godspeed", "神速", "移动速度增加%s", "moveSpeed", "10,10,10,10,10,10,10,10,10,10", "add"],
-        ["magnet", "吸铁石", "增加%s吸引经验的范围", "magnetRange", "10,20,30,40,50,60,80,100", "*%"],
+        ["magnet", "吸铁石", "脉冲吸取%s范围内全部经验", "magnet", "250:8,280:7,320:6,370:5,430:4,500:3,580:2,700:1", "magnet"],
         ["enlarge", "倍大化", "武器变大%s", "weaponScale", "5,10,15,20,25,30,40,50,60", "*%"],
+        ["damage", "增伤", "武器伤害增加%s", "weaponAtk", "50,100", "*%"],
     ],
 }
 

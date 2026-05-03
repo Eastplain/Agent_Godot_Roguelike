@@ -1,20 +1,26 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://dibxl0xgvlq6u"]
 
-[ext_resource type="Script" path="res://weapon/axe/axe.gd" id="1_axeGd"]
+[ext_resource type="Script" uid="uid://bje6u3wfecqx0" path="res://weapon/axe/axe.gd" id="1_axeGd"]
+[ext_resource type="Texture2D" uid="uid://bubcljye414ik" path="res://resource/weapon/Axe.png" id="2_axeTex"]
 
 [sub_resource type="RectangleShape2D" id="AxeShape"]
-size = Vector2(50, 32)
+size = Vector2(52, 100)
 
 [node name="Axe" type="Node2D"]
 script = ExtResource("1_axeGd")
 
 [node name="Scale" type="Node2D" parent="."]
+scale = Vector2(1, 1)
 
 [node name="Area" type="Area2D" parent="Scale"]
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Area"]
+position = Vector2(0, -50)
 shape = SubResource("AxeShape")
 
-[node name="Mesh" type="MeshInstance2D" parent="Scale"]
+[node name="Sprite2D" type="Sprite2D" parent="Scale"]
+position = Vector2(0, -64)
+scale = Vector2(1, 1)
+texture = ExtResource("2_axeTex")

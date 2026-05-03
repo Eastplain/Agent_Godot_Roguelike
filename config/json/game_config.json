@@ -212,21 +212,13 @@
       "values": "1,1,1,1,1,1,1,1,1,1",
       "type": "add"
     },
-    "godspeed": {
-      "id": "godspeed",
-      "name": "神速",
-      "desc": "移动速度增加%s",
-      "effectVar": "moveSpeed",
-      "values": 20,
-      "type": "add"
-    },
     "magnet": {
       "id": "magnet",
       "name": "吸铁石",
-      "desc": "增加%s吸引经验的范围",
-      "effectVar": "magnetRange",
-      "values": "10,30,50,80,100",
-      "type": "*%"
+      "desc": "脉冲吸取%s范围内全部经验",
+      "effectVar": "magnet",
+      "values": "250:8,280:7,320:6,370:5,430:4,500:3,580:2,700:1",
+      "type": "magnet"
     },
     "enlarge": {
       "id": "enlarge",
