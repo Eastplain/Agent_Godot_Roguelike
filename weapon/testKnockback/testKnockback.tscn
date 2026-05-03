@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapon/testKnockback/testKnockback.gd" id="1_tkGd"]
+
+[sub_resource type="RectangleShape2D" id="TkShape"]
+size = Vector2(24, 24)
+
+[node name="TestKnockback" type="Node2D"]
+script = ExtResource("1_tkGd")
+
+[node name="Scale" type="Node2D" parent="."]
+
+[node name="Area" type="Area2D" parent="Scale"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Area"]
+shape = SubResource("TkShape")
+
+[node name="Mesh" type="MeshInstance2D" parent="Scale"]

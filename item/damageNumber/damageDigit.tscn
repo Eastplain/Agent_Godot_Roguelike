@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://item/damageNumber/damageDigit.gd" id="1_ddGd"]
+
+[node name="DamageDigit" type="Sprite2D"]
+script = ExtResource("1_ddGd")
+scale = Vector2(3, 3)
+centered = true

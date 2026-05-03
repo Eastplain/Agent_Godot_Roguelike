@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b62bp7tatiere"]
+
+[ext_resource type="Script" uid="uid://cn8fr2bhok572" path="res://chr/player/player.gd" id="1_playerGd"]
+[ext_resource type="Script" uid="uid://b32e6cocqdi80" path="res://chr/player/playerVisual.gd" id="1_visualGd"]
+[ext_resource type="PackedScene" path="res://weapon/longSword/longSword.tscn" id="2_ls"]
+
+[sub_resource type="RectangleShape2D" id="PlayerShape"]
+size = Vector2(22, 22)
+
+[node name="Player" type="Area2D" unique_id=71286847 groups=["player"]]
+collision_layer = 1
+collision_mask = 6
+script = ExtResource("1_playerGd")
+startWeapon = ExtResource("2_ls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1287218905]
+shape = SubResource("PlayerShape")
+
+[node name="Visual" type="Node2D" parent="." unique_id=390119487]
+script = ExtResource("1_visualGd")
+
+[node name="WeaponSlot" type="Node2D" parent="." unique_id=1232142058]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapon/longSword/longSword.gd" id="1_lsGd"]
+
+[sub_resource type="RectangleShape2D" id="LongSwordShape"]
+size = Vector2(16, 55)
+
+[node name="LongSword" type="Node2D"]
+script = ExtResource("1_lsGd")
+
+[node name="Scale" type="Node2D" parent="."]
+
+[node name="Area" type="Area2D" parent="Scale"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Area"]
+shape = SubResource("LongSwordShape")
+
+[node name="Mesh" type="MeshInstance2D" parent="Scale"]

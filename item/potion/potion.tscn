@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bg6xt3kuka5n8"]
+
+[ext_resource type="Script" uid="uid://c6ei6n76fatv1" path="res://item/potion/potion.gd" id="1_potionGd"]
+
+[sub_resource type="CircleShape2D" id="PotionShape"]
+radius = 16.0
+
+[node name="Potion" type="Area2D" unique_id=280173656]
+collision_layer = 4
+script = ExtResource("1_potionGd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=389613702]
+shape = SubResource("PotionShape")
